@@ -7,15 +7,25 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Card: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack{
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color.white)
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(lineWidth: 3)
+            Text("😀")
+                .font(.system(size: 72))
+                .padding()
+            
+        }.foregroundColor(.orange)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Card()
+            .preferredColorScheme(.dark)
     }
 }
+
