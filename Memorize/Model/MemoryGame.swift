@@ -23,7 +23,7 @@ struct MemoryGame<CardContent: Hashable> {
     }
     
     mutating func choose(card: Card){
-        guard let cardIndex = index(of: card) else { return }
+        guard let cardIndex = cards.firstIndex(of: card) else { return }
         
         cards[cardIndex].isFaceUp.toggle()
 //        OR
@@ -33,11 +33,6 @@ struct MemoryGame<CardContent: Hashable> {
 
     }
     
-    private func index(of card: Card) -> Int? {
-        cards.firstIndex { storedCard in
-            card.id == storedCard.id
-        }
-    }
     
     struct Card: Identifiable{
         let id: Int
