@@ -7,16 +7,18 @@
 
 import Foundation
 
-class EmojiMemoryGame: ObservableObject {
-    @Published private var gameModel: MemoryGame<String>
+typealias Emoji = String
 
-    private static func createMemoryGame(_ numberOfPairsOfCards: Int) -> MemoryGame<String> {
+class EmojiMemoryGame: ObservableObject {
+    @Published private var gameModel: MemoryGame<Emoji>
+
+    private static func createMemoryGame(_ numberOfPairsOfCards: Int) -> MemoryGame<Emoji> {
         var emojis = ["👻", "🎃", "😇", "💩", "😍", "😭", "😱", "👽", "🥳", "🐼", "🐸", "🍒", "🍏", "🍐"]
         
         // shuffle emojis to allow more random emojis set appear in each game
         emojis.shuffle()
         
-        return MemoryGame<String>(numberOfPairsOfCards: numberOfPairsOfCards) { index in
+        return MemoryGame<Emoji>(numberOfPairsOfCards: numberOfPairsOfCards) { index in
             return emojis[index]
         }
     }
@@ -28,13 +30,13 @@ class EmojiMemoryGame: ObservableObject {
     
     //MARK: - Access to the Model
     
-    var cards: [MemoryGame<String>.Card] {
+    var cards: [MemoryGame<Emoji>.Card] {
         gameModel.cards
     }
     
     //MARK: - Intent(s)
     
-    func choose(card: MemoryGame<String>.Card){
+    func choose(card: MemoryGame<Emoji>.Card){
         gameModel.choose(card: card)
     }
 }
