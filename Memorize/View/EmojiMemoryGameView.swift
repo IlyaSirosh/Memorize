@@ -1,5 +1,5 @@
 //
-//  CardGrid.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by Illya Sirosh on 18.01.2021.
