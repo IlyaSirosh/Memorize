@@ -10,7 +10,6 @@ import SwiftUI
 struct EmojiMemoryGameView: View {
     @ObservedObject var gameViewModel: EmojiMemoryGame
     
-    
     var body: some View {
         HStack(spacing: 10) {
             ForEach(gameViewModel.cards){ card in
@@ -19,7 +18,7 @@ struct EmojiMemoryGameView: View {
                         gameViewModel.choose(card: card)
                     }
                     .aspectRatio(2/3, contentMode: .fit)
-            }.font(gameViewModel.cards.count < 10 ? .largeTitle : .body)
+            }
         }.padding()
     }
 }
