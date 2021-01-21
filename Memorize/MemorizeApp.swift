@@ -9,11 +9,17 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-    @State var game = EmojiMemoryGame(numberOfPairsOfCards: Int.random(in: 2...5))
+    @State var game = EmojiMemoryGame(theme: EmojiThemeFactory.randomTheme)
     
     var body: some Scene {
         WindowGroup {
-            EmojiMemoryGameView(gameViewModel: game)
+            VStack {
+                EmojiMemoryGameView(gameViewModel: game)
+                Button("New Game") {
+                    game = EmojiMemoryGame(theme: EmojiThemeFactory.randomTheme)
+                }
+            }
+            
         }
     }
 }

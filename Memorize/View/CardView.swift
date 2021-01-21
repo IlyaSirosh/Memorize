@@ -26,10 +26,12 @@ struct CardView: View {
                 Text(card.content)
                     .font(.system(size:fontSize(for: size)))
             } else {
-                RoundedRectangle(cornerRadius: Const.cornerRadius)
-                    .fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: Const.cornerRadius)
+                        .fill()
+                }
             }
-        }.foregroundColor(.orange)
+        }
     }
     
     func fontSize(for size: CGSize) -> CGFloat {

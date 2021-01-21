@@ -7,8 +7,22 @@
 
 import Foundation
 
-struct MemoryGame<CardContent: Hashable> {
-    var cards: [Card]
+struct MemoryGame<CardContent: Equatable> {
+    private(set) var cards: [Card]
+    private var indexOfFaceUpCard: Int?
+    {
+        set{
+            for index in cards.indices {
+                cards[index].isFaceUp = index == newValue
+            }
+        }
+        get {
+            let faceUpCardIndecies = cards.indices.filter { cards[$0].isFaceUp }
+            return faceUpCardIndecies.only
+        }
+    }
+    
+    private(set) var score = 0
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         self.cards = [Card]()
@@ -23,14 +37,31 @@ struct MemoryGame<CardContent: Hashable> {
     }
     
     mutating func choose(card: Card){
-        guard let cardIndex = cards.firstIndex(of: card) else { return }
+        guard let cardIndex = cards.firstIndex(of: card), !cards[cardIndex].isFaceUp && !cards[cardIndex].isMatched else {return}
         
-        cards[cardIndex].isFaceUp.toggle()
-//        OR
-//        var storedCard = cards[cardIndex]
-//        storedCard.isFaceUp.toggle()
-//        cards[cardIndex] = storedCard
-
+        if let potentialMatchCardIndex = indexOfFaceUpCard {
+            if cards[potentialMatchCardIndex].content == cards[cardIndex].content {
+                cards[potentialMatchCardIndex].isMatched = true
+                cards[cardIndex].isMatched = true
+                scoreUp()
+            } else {
+                scoreDown()
+            }
+            cards[cardIndex].isFaceUp = true
+        } else {
+            for index in cards.indices{
+                cards[index].isFaceUp = false
+            }
+            indexOfFaceUpCard = cardIndex
+        }
+    }
+    
+    private mutating func scoreUp(){
+        score += 2
+    }
+    
+    private mutating func scoreDown(){
+        score = score - 1 > 0 ? score - 1 : 0
     }
     
     

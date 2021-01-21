@@ -10,6 +10,7 @@ import Foundation
 typealias Emoji = String
 
 class EmojiMemoryGame: ObservableObject {
+    let theme: GameTheme<Emoji>
     @Published private var gameModel: MemoryGame<Emoji>
 
     private static func createMemoryGame(_ numberOfPairsOfCards: Int) -> MemoryGame<Emoji> {
@@ -23,8 +24,9 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    init(numberOfPairsOfCards: Int){
-        self.gameModel = EmojiMemoryGame.createMemoryGame(numberOfPairsOfCards)
+    init(theme: GameTheme<Emoji>){
+        self.theme = theme
+        self.gameModel = MemoryGame<Emoji>(numberOfPairsOfCards: theme.numberOfCards, cardContentFactory: theme.contentFactory)
     }
 
     
@@ -32,6 +34,10 @@ class EmojiMemoryGame: ObservableObject {
     
     var cards: [MemoryGame<Emoji>.Card] {
         gameModel.cards
+    }
+    
+    var score: Int {
+        gameModel.score
     }
     
     //MARK: - Intent(s)

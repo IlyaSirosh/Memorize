@@ -10,6 +10,9 @@
 		49A90C9725B8690C00A0F72F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A90C9625B8690C00A0F72F /* Grid.swift */; };
 		49A90C9A25B8710F00A0F72F /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A90C9925B8710F00A0F72F /* GridLayout.swift */; };
 		49A90C9D25B873F100A0F72F /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A90C9C25B873F100A0F72F /* Array+Identifiable.swift */; };
+		49DC5A7E25B9A7A6004BB7B7 /* Array+Only.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC5A7D25B9A7A6004BB7B7 /* Array+Only.swift */; };
+		49DC5A8125B9B6DA004BB7B7 /* GameTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC5A8025B9B6DA004BB7B7 /* GameTheme.swift */; };
+		49DC5A8425B9B7A4004BB7B7 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC5A8325B9B7A4004BB7B7 /* ThemeFactory.swift */; };
 		49E0C93925B5B116003E86D6 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0C93825B5B116003E86D6 /* MemorizeApp.swift */; };
 		49E0C93B25B5B116003E86D6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E0C93A25B5B116003E86D6 /* CardView.swift */; };
 		49E0C93D25B5B117003E86D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E0C93C25B5B117003E86D6 /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 		49A90C9625B8690C00A0F72F /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		49A90C9925B8710F00A0F72F /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		49A90C9C25B873F100A0F72F /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
+		49DC5A7D25B9A7A6004BB7B7 /* Array+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Only.swift"; sourceTree = "<group>"; };
+		49DC5A8025B9B6DA004BB7B7 /* GameTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTheme.swift; sourceTree = "<group>"; };
+		49DC5A8325B9B7A4004BB7B7 /* ThemeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
 		49E0C93525B5B116003E86D6 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E0C93825B5B116003E86D6 /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
 		49E0C93A25B5B116003E86D6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -49,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				49A90C9C25B873F100A0F72F /* Array+Identifiable.swift */,
+				49DC5A7D25B9A7A6004BB7B7 /* Array+Only.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -115,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				49E0C95B25B5D40C003E86D6 /* EmojiMemoryGame.swift */,
+				49DC5A8025B9B6DA004BB7B7 /* GameTheme.swift */,
+				49DC5A8325B9B7A4004BB7B7 /* ThemeFactory.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -191,7 +200,10 @@
 				49E0C93B25B5B116003E86D6 /* CardView.swift in Sources */,
 				49E0C93925B5B116003E86D6 /* MemorizeApp.swift in Sources */,
 				49E0C95125B5D1D2003E86D6 /* MemoryGame.swift in Sources */,
+				49DC5A8125B9B6DA004BB7B7 /* GameTheme.swift in Sources */,
+				49DC5A7E25B9A7A6004BB7B7 /* Array+Only.swift in Sources */,
 				49E0C94A25B5C518003E86D6 /* EmojiMemoryGameView.swift in Sources */,
+				49DC5A8425B9B7A4004BB7B7 /* ThemeFactory.swift in Sources */,
 				49E0C95C25B5D40C003E86D6 /* EmojiMemoryGame.swift in Sources */,
 				49A90C9D25B873F100A0F72F /* Array+Identifiable.swift in Sources */,
 				49A90C9A25B8710F00A0F72F /* GridLayout.swift in Sources */,

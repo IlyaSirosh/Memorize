@@ -38,4 +38,4 @@ struct Grid<Item: Identifiable, ItemView: View>: View {
             .position(layout.location(ofItemAt: index)))
     }
 
-}
+} 

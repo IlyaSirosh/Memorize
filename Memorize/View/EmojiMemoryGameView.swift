@@ -11,19 +11,31 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var gameViewModel: EmojiMemoryGame
     
     var body: some View {
-        Grid(gameViewModel.cards){ card in
-            CardView(card: card)
-                .onTapGesture {
-                    gameViewModel.choose(card: card)
-                }
-                .aspectRatio(2/3, contentMode: .fit)
-                .padding()
+        VStack {
+            HStack{
+                Text(gameViewModel.theme.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                Spacer()
+                Text("Score: \(gameViewModel.score)")
+                    .fontWeight(.semibold)
+                    .font(.title2)
+            }.padding()
+            Grid(gameViewModel.cards){ card in
+                CardView(card: card)
+                    .onTapGesture {
+                        gameViewModel.choose(card: card)
+                    }
+                    .aspectRatio(2/3, contentMode: .fit)
+                    .padding()
+                    .foregroundColor(gameViewModel.theme.color)
+            }
         }
     }
 }
 
 struct CardGrid_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiMemoryGameView(gameViewModel: EmojiMemoryGame(numberOfPairsOfCards: 5))
+        EmojiMemoryGameView(gameViewModel: EmojiMemoryGame(theme: EmojiThemeFactory.helloween))
     }
 }
