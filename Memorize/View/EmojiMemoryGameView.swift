@@ -26,11 +26,15 @@ struct EmojiMemoryGameView: View {
                     .onTapGesture {
                         gameViewModel.choose(card: card)
                     }
-                    .aspectRatio(2/3, contentMode: .fit)
+                    .aspectRatio(Const.cardRatio, contentMode: .fit)
                     .padding()
                     .foregroundColor(gameViewModel.theme.color)
             }
         }
+    }
+    
+    struct Const {
+        static let cardRatio: CGFloat = 2/3
     }
 }
 
