@@ -17,7 +17,7 @@ struct MemorizeApp: App {
                 EmojiMemoryGameView(gameViewModel: game)
                 Button("New Game") {
                     game = EmojiMemoryGame(theme: EmojiThemeFactory.randomTheme)
-                }
+                }.padding()
             }
             
         }
