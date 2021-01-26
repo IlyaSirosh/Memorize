@@ -10,15 +10,17 @@ import SwiftUI
 struct Grid<Item: Identifiable, ItemView: View>: View {
     private var items: [Item]
     private var viewForItem: (Item) -> ItemView
-    
-    init(_ items: [Item], viewForItem: @escaping (Item) -> ItemView){
+    private var itemRatio: Double
+     
+    init(_ items: [Item], itemRatio: Double = 1, viewForItem: @escaping (Item) -> ItemView){
         self.items = items
         self.viewForItem = viewForItem
+        self.itemRatio = itemRatio
     }
     
     var body: some View {
         GeometryReader { geometry in
-            self.body(for: GridLayout(itemCount: items.count, in: geometry.size))
+            self.body(for: GridLayout(itemCount: items.count, nearAspectRatio: itemRatio, in: geometry.size))
         }
     }
     

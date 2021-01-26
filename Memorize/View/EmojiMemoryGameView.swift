@@ -21,7 +21,8 @@ struct EmojiMemoryGameView: View {
                     .fontWeight(.semibold)
                     .font(.title2)
             }.padding()
-            Grid(gameViewModel.cards){ card in
+            Grid(gameViewModel.cards, itemRatio: Double(Const.cardRatio)){
+                card in
                 CardView(card: card)
                     .onTapGesture {
                         gameViewModel.choose(card: card)
@@ -40,6 +41,8 @@ struct EmojiMemoryGameView: View {
 
 struct CardGrid_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiMemoryGameView(gameViewModel: EmojiMemoryGame(theme: EmojiThemeFactory.helloween))
+        let game = EmojiMemoryGame(theme: EmojiThemeFactory.helloween)
+        game.choose(card: game.cards[1])
+        return EmojiMemoryGameView(gameViewModel: game)
     }
 }
