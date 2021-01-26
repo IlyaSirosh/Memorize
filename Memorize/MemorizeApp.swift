@@ -13,13 +13,7 @@ struct MemorizeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            VStack {
-                EmojiMemoryGameView(gameViewModel: game)
-                Button("New Game") {
-                    game = EmojiMemoryGame(theme: EmojiThemeFactory.randomTheme)
-                }.padding()
-            }
-            
+            EmojiMemoryGameView(gameViewModel: game)
         }
     }
 }

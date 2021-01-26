@@ -25,13 +25,22 @@ struct EmojiMemoryGameView: View {
                 card in
                 CardView(card: card)
                     .onTapGesture {
-                        gameViewModel.choose(card: card)
+                        withAnimation(.easeInOut(duration: 1)) {
+                            gameViewModel.choose(card: card)
+                        }
                     }
                     .aspectRatio(Const.cardRatio, contentMode: .fit)
-                    .padding()
                     .foregroundColor(gameViewModel.theme.color)
+                    .padding(5)
+            }
+            .padding()
+            Button("New Game") {
+                withAnimation(.easeInOut(duration: 1)) {
+                    gameViewModel.resetGame()
+                }
             }
         }
+//        .navigationBarItems(trailing: Button("New Game", action: gameViewModel.resetGame) )
     }
     
     struct Const {

@@ -35,4 +35,7 @@ class EmojiMemoryGame: ObservableObject {
         gameModel.choose(card: card)
     }
     
+    func resetGame() {
+        self.gameModel = MemoryGame<Emoji>(numberOfPairsOfCards: theme.numberOfCards, cardContentFactory: theme.contentFactory)
+    }
 }

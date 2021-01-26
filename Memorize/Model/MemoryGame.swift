@@ -71,7 +71,71 @@ struct MemoryGame<CardContent: Equatable> {
     struct Card: Identifiable{
         let id: Int
         let content: CardContent
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
+        var isFaceUp: Bool = false {
+            didSet {
+                if isFaceUp {
+                    startUsingBonusTime()
+                } else {
+                    stopUsingBonusTime()
+                }
+            }
+        }
+        var isMatched: Bool = false {
+            didSet {
+                stopUsingBonusTime()
+            }
+        }
+        
+        init(id: Int, content: CardContent){
+            self.id = id
+            self.content = content
+        }
+        
+        init(id: Int, content: CardContent, isFaceUp: Bool){
+            self.init(id: id, content: content)
+            self.isFaceUp = isFaceUp
+        }
+        
+        //MARK: - Card bonus time
+        var bonusTimeLimit: TimeInterval = 6
+        private var faceUpTime: TimeInterval {
+            if let lastFaceUpDate = self.lastFaceUpDate {
+                return pastFaceUpTime + Date().timeIntervalSince(lastFaceUpDate)
+            } else {
+                return pastFaceUpTime
+            }
+        }
+        private var lastFaceUpDate: Date?
+        private var pastFaceUpTime: TimeInterval = 0
+        
+        var bonusTimeRamaining: TimeInterval {
+            max(0, bonusTimeLimit - faceUpTime)
+        }
+        
+        var bonusRamaining: Double {
+            (bonusTimeLimit > 0 && bonusTimeRamaining > 0) ? bonusTimeRamaining / bonusTimeLimit : 0
+        }
+        
+        var hasEarnedBonus: Bool {
+            isMatched && bonusTimeRamaining > 0
+        }
+        
+        var isConsumingTime: Bool {
+            isFaceUp && !isMatched && bonusTimeRamaining > 0
+        }
+        
+
+        private mutating func startUsingBonusTime() {
+            if isConsumingTime, lastFaceUpDate == nil {
+                lastFaceUpDate = Date()
+            }
+        }
+        
+        private mutating func stopUsingBonusTime() {
+            pastFaceUpTime = faceUpTime
+            lastFaceUpDate = nil
+        }
     }
+
+
 }
